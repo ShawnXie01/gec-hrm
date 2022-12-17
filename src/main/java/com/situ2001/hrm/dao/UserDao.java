@@ -7,5 +7,5 @@ import java.util.List;
 public interface UserDao {
     public User login(String username, String password);
     // query user
-    public List<User> userList();
+    public List<User> userList(String loginname,String status);
 }
