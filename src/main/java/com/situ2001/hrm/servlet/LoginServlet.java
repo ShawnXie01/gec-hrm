@@ -1,5 +1,10 @@
 package com.situ2001.hrm.servlet;
 
+import com.google.gson.Gson;
+import com.situ2001.hrm.dao.impl.UserDaoImpl;
+import com.situ2001.hrm.pojo.R;
+import com.situ2001.hrm.pojo.User;
+
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,5 +68,40 @@ public class LoginServlet extends HttpServlet {
         int b = random.nextInt(256);
         Color color = new Color(r, g, b);
         return color;
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        super.doPost(req, resp);
+        resp.setCharacterEncoding("UTF-8");
+
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String vcode = req.getParameter("vcode");
+        System.out.println("用户" + username + " 密码" + password + "--vcode：" + vcode); // TODO a better logger
+
+        HttpSession session = req.getSession();
+        String code = (String) session.getAttribute("code");
+        System.out.println(code);
+        if (code.equals(vcode)) {
+            // TODO get info from DAO
+            var userImpl = new UserDaoImpl();
+            var user = userImpl.login(username, password);
+            System.out.println(user);
+            if (user != null) {
+//                System.out.println(user.getUsername());
+//                resp.getWriter().print(new Gson().toJson(R.ok("登录成功")));
+                // 抽象泄漏...
+                R r = new R();
+                r.put("user", user);
+                r.put("msg","登陆成功");
+                var ret = new Gson().toJson(r);
+                resp.getWriter().print(ret);
+            } else {
+                resp.getWriter().print(new Gson().toJson(R.error("账号或密码错误")));
+            }
+        } else {
+            resp.getWriter().print(new Gson().toJson(R.error("验证码错误，请重新输入")));
+        }
     }
 }

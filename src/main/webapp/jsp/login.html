@@ -174,7 +174,9 @@
                             success: function (result) {// 响应成功就会自动执行该方法，result中封装的是响应的结果
                                 console.log(result);
                                 // 提示
-                                if (result == 1) {// 登录成功
+                                if (result.code == 1) {// 登录成功
+                                  // save to sessionStorage
+                                  sessionStorage.setItem("userInfo", result.user.loginname);
                                     bootoast({
                                         message: "登录成功",
                                         type: 'success',
@@ -185,7 +187,7 @@
 
                                 }else{
                                     bootoast({
-                                        message: "登录失败",
+                                        message: result.msg,
                                         type: 'danger',
                                         position:'top',
                                         timeout:2

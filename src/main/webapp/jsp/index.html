@@ -179,9 +179,12 @@
     <script>
     $(function () {
 
-        sessionStorage.setItem("user","admin1")
-        console.log(sessionStorage.getItem("user"))
-        $('#admin111').text(sessionStorage.getItem("user"));
+        // sessionStorage.setItem("user","admin1")
+        // console.log(sessionStorage.getItem("user"))
+        // $('#admin111').text(sessionStorage.getItem("user"));
+        const loginname = sessionStorage.getItem("userInfo");
+        console.log(loginname);
+        $('#admin111').text(loginname);
     })
     </script>
 </body>
