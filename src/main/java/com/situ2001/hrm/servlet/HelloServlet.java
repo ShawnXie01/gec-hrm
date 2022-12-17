@@ -1,4 +1,4 @@
-package com.situ2001.servlet;
+package com.situ2001.hrm.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
