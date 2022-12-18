@@ -24,16 +24,22 @@ public class UserDaoImpl extends JDBCUtils<User> implements UserDao {
      * @return
      */
     @Override
-    public List<User> userList(String loginname, String status) {
-        String sql = "select * from user_inf where 1=1";
+    public List<User> userList(String loginname, String status, int page, int limit) {
+        var sql = "select * from user_inf where 1=1";
         if (loginname != null) {
             sql += " and loginname like '%" + loginname + "%'";
         }
         if (status != null && !status.isEmpty()) {
             sql += " and status=" + status;
         }
-        var users = query(sql);
-        return users;
+        // pagination
+        sql += " limit " + (page - 1) * limit + "," + limit + "";
+        return query(sql);
+    }
+
+    @Override
+    public int count() {
+        return query("select * from user_inf").size();
     }
 
     @Override

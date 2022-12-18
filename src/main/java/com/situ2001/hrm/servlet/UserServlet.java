@@ -71,13 +71,16 @@ public class UserServlet extends HttpServlet {
     private void userList(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String loginname = req.getParameter("username");
         String status = req.getParameter("status");
+        int limit = Integer.parseInt(req.getParameter("limit"));
+        int page = Integer.parseInt(req.getParameter("page"));
 
+        var users = userDao.userList(loginname, status, page, limit);
+        var count = userDao.count();
 
-        var users = userDao.userList(loginname, status);
         R r = new R();
         r.put("msg", "查询成功");
         r.put("data", users);
-        r.put("count", 0); // TODO 分页
+        r.put("count", count); // TODO 分页
         r.put("code", 0);
         resp.getWriter().print(new Gson().toJson(r));
     }
