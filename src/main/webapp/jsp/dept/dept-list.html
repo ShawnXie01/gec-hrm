@@ -81,7 +81,7 @@
                   type: 'post',
                   data:{id:data.id},
                   success: function (data) {
-                    if (data == 1) {
+                    if (data == 0) {
                       layer.close(index);
                       layer.msg('删除成功', {
                         icon: 6,
@@ -141,7 +141,7 @@
   		    	},
   		    	type:'post',
   		    	success:function(data){
-  		    		if (data == 1) {
+  		    		if (data == 0) {
   		    			layer.msg('删除成功！',{icon:6,offset:"auto",time:2000});//提示框
   		    			setTimeout(function(){
   	  						location.reload();//重新加载页面表格

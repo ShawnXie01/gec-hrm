@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea9d649f-54c5-4a18-b1a5-28ee26519087" name="Changes" comment="delete users">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/JobDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/impl/JobDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/pojo/Job.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/servlet/JobServlet.java" afterDir="false" />
+    <list default="true" id="ea9d649f-54c5-4a18-b1a5-28ee26519087" name="Changes" comment="CRUD for jobs sheet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/job/job-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/job/job-add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/job/job-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/job/job-edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/job/job-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/job/job-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/dept/dept-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/dept/dept-list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671352577573</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="CRUD for jobs sheet">
+      <created>1671358158931</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671358158931</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -224,6 +225,18 @@
     <MESSAGE value="mark" />
     <MESSAGE value="mark before 分页" />
     <MESSAGE value="delete users" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete users" />
+    <MESSAGE value="CRUD for jobs sheet" />
+    <option name="LAST_COMMIT_MESSAGE" value="CRUD for jobs sheet" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/situ2001/hrm/servlet/DeptServlet.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
