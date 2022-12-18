@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/userlist.action", "/checkName.action", "/addUser.action", "/updUser.action"})
+@WebServlet(urlPatterns = {"/userlist.action", "/checkName.action", "/addUser.action", "/updUser.action", "/delUser.action"})
 public class UserServlet extends HttpServlet {
     private final UserDaoImpl userDao = new UserDaoImpl();
 
@@ -44,6 +44,28 @@ public class UserServlet extends HttpServlet {
             addUser(req, resp);
         } else if (action.equals("updUser.action")) {
             updUser(req, resp);
+        } else if (action.equals("delUser.action")) {
+            delUser(req, resp);
+        }
+    }
+
+    private void delUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var out = resp.getWriter();
+        var id = Integer.parseInt(req.getParameter("id"));
+
+        // before deletion
+        // check whether if the method is deleting yourself
+        var session = req.getSession();
+        var user = (User) session.getAttribute("user");
+        if (user.getId() != id) {
+            var ret = userDao.delUser(id);
+            if (ret > 0) {
+                out.print(0);
+            } else {
+                out.print(-1);
+            }
+        } else {
+            out.print(user.getId()); // an arbitrary
         }
     }
 

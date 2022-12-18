@@ -59,6 +59,17 @@ public class UserDaoImpl extends JDBCUtils<User> implements UserDao {
         return update("insert into user_inf values(null,?,?,?,CURRENT_TIMESTAMP,?)", user.getLoginname(), user.getPassword(), user.getStatus(), user.getUsername());
     }
 
+    /**
+     * delete a user
+     *
+     * @return
+     */
+    @Override
+    public int delUser(int id) {
+        // TODO update utility
+        return update("delete from user_inf where id =?", id);
+    }
+
     @Override
     public User getBean(ResultSet rs) {
         User user = new User();

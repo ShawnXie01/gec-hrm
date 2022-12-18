@@ -91,6 +91,9 @@ public class LoginServlet extends HttpServlet {
             if (user != null) {
 //                System.out.println(user.getUsername());
 //                resp.getWriter().print(new Gson().toJson(R.ok("登录成功")));
+                // TODO save user info
+                session.setAttribute("user",user);
+
                 // 抽象泄漏...
                 R r = new R();
                 r.put("user", user);

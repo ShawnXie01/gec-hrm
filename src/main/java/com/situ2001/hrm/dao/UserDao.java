@@ -12,4 +12,5 @@ public interface UserDao {
     int addUser(User user);
     int updUser(User user);
     int count();
+    int delUser(int id);
 }
