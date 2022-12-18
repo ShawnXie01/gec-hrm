@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
-@WebServlet(urlPatterns = {"/userlist.action", "/checkName.action", "/addUser.action", "/updUser.action", "/delUser.action"})
+@WebServlet(urlPatterns = {"/userlist.action", "/checkName.action", "/addUser.action", "/updUser.action", "/delUser.action", "/delUsers.action"})
 public class UserServlet extends HttpServlet {
     private final UserDaoImpl userDao = new UserDaoImpl();
 
@@ -46,7 +47,31 @@ public class UserServlet extends HttpServlet {
             updUser(req, resp);
         } else if (action.equals("delUser.action")) {
             delUser(req, resp);
+        } else if (action.equals("delUsers.action")) {
+            delUsers(req, resp);
         }
+    }
+
+    private void delUsers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var out = resp.getWriter();
+        var idsString = req.getParameter("ids");
+        var ids = idsString.split(",");
+        // TODO sql in() syntax
+        var session = req.getSession();
+        var user = (User) session.getAttribute("user");
+        Arrays.stream(ids).map(Integer::parseInt).filter(u -> {
+            if (user != null) {
+                return u != user.getId();
+            }
+            return true;
+        }).forEach(u -> {
+            var ret = userDao.delUser(u);
+            if (ret > 0) {
+                out.print(0);
+            } else {
+                out.print(-1);
+            }
+        });
     }
 
     private void delUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
