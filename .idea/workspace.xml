@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea9d649f-54c5-4a18-b1a5-28ee26519087" name="Changes" comment="mark before add junit">
+    <list default="true" id="ea9d649f-54c5-4a18-b1a5-28ee26519087" name="Changes" comment="mark">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/pojo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/servlet/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/servlet/UserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/situ2001/hrm/dao/impl/UserDaoImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/situ2001/hrm/dao/impl/UserDaoImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/user-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/user-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/user/user-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/user/user-list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671265299740</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="mark">
+      <created>1671271752506</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1671271752506</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -197,17 +205,7 @@
     <MESSAGE value="dust" />
     <MESSAGE value="add mysql-connector-8.0.31" />
     <MESSAGE value="mark before add junit" />
-    <option name="LAST_COMMIT_MESSAGE" value="mark before add junit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/impl/UserDaoImpl.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="mark" />
+    <option name="LAST_COMMIT_MESSAGE" value="mark" />
   </component>
 </project>
