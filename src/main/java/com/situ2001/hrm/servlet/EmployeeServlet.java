@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
-@WebServlet(urlPatterns = {"/employeeList.action", "/checkCardId.action", "/addEmployee.action", "/delEmployee.action", "/delEmployees.action"})
+@WebServlet(urlPatterns = {"/employeeList.action", "/checkCardId.action", "/addEmployee.action", "/delEmployee.action", "/delEmployees.action","/updEmployee.action"})
 public class EmployeeServlet extends HttpServlet {
     private EmployeeDao employeeDao = new EmployeeDaoImpl();
 
@@ -119,6 +120,8 @@ public class EmployeeServlet extends HttpServlet {
             delEmployee(req, resp);
         } else if (action.equals("delEmployees.action")) {
             delEmployees(req, resp);
+        }else if(action.equals("updEmployee.action")){
+            updEmployee(req,resp);
         }
     }
 
@@ -137,6 +140,36 @@ public class EmployeeServlet extends HttpServlet {
             resp.getWriter().print(1);
         } else {
             resp.getWriter().print(0);
+        }
+    }
+
+    private void updEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String cardId = request.getParameter("cardId");
+        String sex = request.getParameter("sex");
+        String jobId = request.getParameter("jobId");
+        String education = request.getParameter("education");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String tel = request.getParameter("tel");
+        String party = request.getParameter("party");
+        String qqNum = request.getParameter("qqNum");
+        String address = request.getParameter("address");
+        String postCode = request.getParameter("postCode");
+        String birthday = request.getParameter("birthday");
+        String race = request.getParameter("race");
+        String speciality = request.getParameter("speciality");
+        String hobby = request.getParameter("hobby");
+        String remark = request.getParameter("remark");
+        String deptId = request.getParameter("deptId");
+        Employee  employee = new Employee(qqNum,party,FormatStringAsDate.formart(birthday),race,speciality,hobby,tel,remark,postCode,Integer.parseInt(id),name,cardId,address,phone,email,Integer.parseInt(sex),education,Integer.parseInt(jobId),Integer.parseInt(deptId));
+        var ret = employeeDao.updEmployee(employee);
+        if (ret > 0) {
+            out.print(1);
+        } else {
+            out.print(0);
         }
     }
 }
