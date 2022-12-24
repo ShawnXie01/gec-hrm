@@ -2,6 +2,12 @@
 
 这是软件系统设计课设学校请来的粤嵌讲师讲的Java Web人事管理系统。
 
+## Why does the repo exist
+
+Just for collaborating with my teammates.
+
+在这里，没有任何规则。
+
 ## Tech Stack
 
 TODO
