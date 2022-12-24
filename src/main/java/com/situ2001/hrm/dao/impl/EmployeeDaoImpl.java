@@ -26,17 +26,18 @@ public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao 
         if (employee.getCardId() != null && !employee.getCardId().isEmpty()) {
             sql += " AND card_id=" + employee.getCardId();
         }
-        if (employee.getJob_id() != -1) {
-            sql += " AND job_id=" + employee.getJob_id();
+        if (employee.getJobId() != -1) {
+            sql += " AND job_id=" + employee.getJobId();
         }
-        if (employee.getDept_id() != -1) {
-            sql += " AND dept_id=" + employee.getDept_id();
+        if (employee.getDeptId() != -1) {
+            sql += " AND dept_id=" + employee.getDeptId();
         }
         if (employee.getPhone() != null && !employee.getPhone().isEmpty()) {
             sql += " AND phone=" + employee.getPhone();
         }
         sql += " limit " + (page - 1) * limit + "," + limit + "";
-        return query(sql);
+        var list = query(sql);
+        return list;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao 
     @Override
     public int addEmployee(Employee employee) {
         return update("insert into employee_inf values (nUll, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ? , ?)",
-                employee.getName(), employee.getCardId(), employee.getAddress(), employee.getPostCode(), employee.getTel(), employee.getPhone(), employee.getQqNum(), employee.getEmail(), employee.getSex(), employee.getParty(), employee.getBirthday(), employee.getRace(), employee.getEducation(), employee.getSpeciality(), employee.getHobby(), employee.getRemark(), employee.getCreateDate(), employee.getState(), employee.getDept_id(), employee.getJob_id());
+                employee.getName(), employee.getCardId(), employee.getAddress(), employee.getPostCode(), employee.getTel(), employee.getPhone(), employee.getQqNum(), employee.getEmail(), employee.getSex(), employee.getParty(), employee.getBirthday(), employee.getRace(), employee.getEducation(), employee.getSpeciality(), employee.getHobby(), employee.getRemark(), employee.getCreateDate(), employee.getState(), employee.getDeptId(), employee.getJobId());
     }
 
     @Override
@@ -65,7 +66,7 @@ public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao 
     @Override
     public int updEmployee(Employee employee) {
         return update("update employee_inf set name=?,card_id=?,address=?,post_code=?,tel=?,phone=?,qq_num=?,email=?,sex=?,party=?,birthday=?,race=?,education=?,speciality=?,hobby=?,remark=?,dept_id=? where id=?",
-                employee.getName(), employee.getCardId(), employee.getAddress(), employee.getPostCode(), employee.getTel(), employee.getPhone(), employee.getQqNum(), employee.getEmail(), employee.getSex(), employee.getParty(), employee.getBirthday(), employee.getRace(), employee.getEducation(), employee.getSpeciality(), employee.getHobby(), employee.getRemark(), employee.getDept_id(), employee.getId());
+                employee.getName(), employee.getCardId(), employee.getAddress(), employee.getPostCode(), employee.getTel(), employee.getPhone(), employee.getQqNum(), employee.getEmail(), employee.getSex(), employee.getParty(), employee.getBirthday(), employee.getRace(), employee.getEducation(), employee.getSpeciality(), employee.getHobby(), employee.getRemark(), employee.getDeptId(), employee.getId());
     }
 
     @Override
@@ -74,16 +75,26 @@ public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao 
         try {
             employee.setId(rs.getInt("id"));
             employee.setName(rs.getString("name"));
-            employee.setPhone(rs.getString("phone"));
             employee.setCardId(rs.getString("card_id"));
             employee.setAddress(rs.getString("address"));
+            employee.setPostCode(rs.getString("POST_CODE"));
+            employee.setTel(rs.getString("tel"));
+            employee.setPhone(rs.getString("phone"));
+            employee.setQqNum(rs.getString("qq_num"));
             employee.setEmail(rs.getString("email"));
             employee.setSex(rs.getInt("sex"));
+            employee.setParty(rs.getString("party"));
+            employee.setBirthday(rs.getDate("birthday"));
+            employee.setRace(rs.getString("race"));
             employee.setEducation(rs.getString("education"));
+            employee.setSpeciality(rs.getString("SPECIALITY"));
+            employee.setHobby(rs.getString("HOBBY"));
+            employee.setRemark(rs.getString("REMARK"));
             employee.setCreateDate(rs.getDate("CREATE_DATE"));
-            employee.setDept_id(rs.getInt("dept_id"));
-            employee.setJob_id(rs.getInt("job_id"));
-            employee.setDept_id(rs.getInt("dept_id"));
+            employee.setState(rs.getInt("state"));
+            employee.setDeptId(rs.getInt("dept_id"));
+            employee.setJobId(rs.getInt("job_id"));
+            employee.setDeptId(rs.getInt("dept_id"));
             employee.setDeptName(rs.getString("deptName"));
             employee.setJobName(rs.getString("jobName"));
             return employee;

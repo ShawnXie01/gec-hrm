@@ -22,15 +22,27 @@ public class Employee {
     private int sex;
     private String education;
     private Date createDate;
-    private int job_id;
-    private int dept_id;
+    private int jobId;
+    private int deptId;
     private String jobName;
     private String deptName;
+
+    public void setQqNum(String qqNum) {
+        this.qqNum = qqNum;
+    }
+
+    public void setParty(String party) {
+        this.party = party;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 
     public Employee() {
     }
 
-    public Employee(String qqNum, String party, Date birthday, String race, String speciality, String hobby, String tel, String remark, String postCode, int id, String name, String cardId, String address, String phone, String email, int sex, String education, int job_id, int dept_id) {
+    public Employee(String qqNum, String party, Date birthday, String race, String speciality, String hobby, String tel, String remark, String postCode, int id, String name, String cardId, String address, String phone, String email, int sex, String education, int jobId, int deptId) {
         this.qqNum = qqNum;
         this.party = party;
         this.birthday = birthday;
@@ -48,11 +60,11 @@ public class Employee {
         this.email = email;
         this.sex = sex;
         this.education = education;
-        this.job_id = job_id;
-        this.dept_id = dept_id;
+        this.jobId = jobId;
+        this.deptId = deptId;
     }
 
-    public Employee(String name, String cardId, String address, String phone, String email, int sex, String education, Date createDate, int deptId, int job_id, String postCode, String qqNum, String party, Date birthday, String race, int state, String speciality, String hobby, String remark, String tel) {
+    public Employee(String name, String cardId, String address, String phone, String email, int sex, String education, Date createDate, int deptId, int jobId, String postCode, String qqNum, String party, Date birthday, String race, int state, String speciality, String hobby, String remark, String tel) {
         this.name = name;
         this.cardId = cardId;
         this.address = address;
@@ -61,8 +73,8 @@ public class Employee {
         this.sex = sex;
         this.education = education;
         this.createDate = createDate;
-        this.dept_id = deptId;
-        this.job_id = job_id;
+        this.deptId = deptId;
+        this.jobId = jobId;
         this.postCode = postCode;
         this.qqNum = qqNum;
         this.party = party;
@@ -159,12 +171,12 @@ public class Employee {
         this.jobName = jobName;
     }
 
-    public int getDept_id() {
-        return dept_id;
+    public int getDeptId() {
+        return deptId;
     }
 
-    public void setDept_id(int dept_id) {
-        this.dept_id = dept_id;
+    public void setDeptId(int deptId) {
+        this.deptId = deptId;
     }
 
     public int getId() {
@@ -239,11 +251,11 @@ public class Employee {
         this.createDate = createDate;
     }
 
-    public int getJob_id() {
-        return job_id;
+    public int getJobId() {
+        return jobId;
     }
 
-    public void setJob_id(int job_id) {
-        this.job_id = job_id;
+    public void setJobId(int jobId) {
+        this.jobId = jobId;
     }
 }

@@ -96,8 +96,8 @@ public class EmployeeServlet extends HttpServlet {
         var employee = new Employee();
         employee.setName(name);
         employee.setSex(sex);
-        employee.setJob_id(jobId);
-        employee.setDept_id(deptId);
+        employee.setJobId(jobId);
+        employee.setDeptId(deptId);
         employee.setCardId(cardId);
         employee.setPhone(phone);
 
