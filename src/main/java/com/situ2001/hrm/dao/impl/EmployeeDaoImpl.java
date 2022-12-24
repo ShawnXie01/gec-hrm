@@ -10,7 +10,12 @@ import java.util.List;
 
 public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao {
     @Override
-    public List<Employee> getEmployeeList(Employee employee) {
+    public int count() {
+        return query("select * from employee_inf").size();
+    }
+
+    @Override
+    public List<Employee> getEmployeeList(Employee employee, int page, int limit) {
         var sql = "select e.*,d.`NAME` deptName,j.`NAME` jobName from employee_inf e,dept_inf d,job_inf j where d.ID=e.dept_id and e.job_id=j.ID";
         if (employee.getName() != null && !employee.getName().isEmpty()) {
             sql += " AND e.name like '%" + employee.getName() + "%'";
@@ -30,6 +35,7 @@ public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao 
         if (employee.getPhone() != null && !employee.getPhone().isEmpty()) {
             sql += " AND phone=" + employee.getPhone();
         }
+        sql += " limit " + (page - 1) * limit + "," + limit + "";
         return query(sql);
     }
 

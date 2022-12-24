@@ -83,8 +83,8 @@ public class EmployeeServlet extends HttpServlet {
         var out = resp.getWriter();
 
 
-        var page = req.getParameter("page");
-        var limit = req.getParameter("limit");
+        var page = Integer.parseInt(req.getParameter("page"));
+        var limit = Integer.parseInt(req.getParameter("limit"));
 
         var name = req.getParameter("name");
         var sex = Integer.parseInt(req.getParameter("sex") == null || req.getParameter("sex").isEmpty() ? "-1" : req.getParameter("sex"));
@@ -102,11 +102,11 @@ public class EmployeeServlet extends HttpServlet {
         employee.setPhone(phone);
 
 
-        var list = employeeDao.getEmployeeList(employee);
+        var list = employeeDao.getEmployeeList(employee,page,limit);
         R r = new R();
         r.put("msg", "查询成功");
         r.put("data", list);
-        r.put("count", 0);
+        r.put("count", employeeDao.count());
         r.put("code", 0);
         out.print(new Gson().toJson(r));
     }
