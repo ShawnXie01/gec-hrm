@@ -34,6 +34,19 @@ public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao 
     }
 
     @Override
+    public boolean selectCardId(String id) {
+        var sql = "select e.*,d.`NAME` deptName,j.`NAME` jobName from employee_inf e,dept_inf d,job_inf j where d.ID=e.dept_id and e.job_id=j.ID" + " and card_id=?";
+        var list = query(sql, id);
+        return list.size() > 0;
+    }
+
+    @Override
+    public int addEmployee(Employee employee) {
+        return update("insert into employee_inf values (nUll, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ? , ?)",
+                employee.getName(), employee.getCardId(), employee.getAddress(), employee.getPostCode(), employee.getTel(), employee.getPhone(), employee.getQqNum(), employee.getEmail(), employee.getSex(), employee.getParty(), employee.getBirthday(), employee.getRace(), employee.getEducation(), employee.getSpeciality(), employee.getHobby(), employee.getRemark(), employee.getCreateDate(), employee.getState(), employee.getDept_id(), employee.getJob_id());
+    }
+
+    @Override
     public Employee getBean(ResultSet rs) {
         Employee employee = new Employee();
         try {

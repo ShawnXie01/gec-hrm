@@ -5,6 +5,7 @@ import com.situ2001.hrm.dao.EmployeeDao;
 import com.situ2001.hrm.dao.impl.EmployeeDaoImpl;
 import com.situ2001.hrm.pojo.Employee;
 import com.situ2001.hrm.pojo.R;
+import com.situ2001.hrm.util.FormatStringAsDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
-@WebServlet(urlPatterns = {"/employeeList.action"})
+@WebServlet(urlPatterns = {"/employeeList.action", "/checkCardId.action", "/addEmployee.action"})
 public class EmployeeServlet extends HttpServlet {
     private EmployeeDao employeeDao = new EmployeeDaoImpl();
 
@@ -28,6 +30,51 @@ public class EmployeeServlet extends HttpServlet {
         var action = initAndGetAction(req, resp);
         if (action.equals("employeeList.action")) {
             employeeList(req, resp);
+        } else if (action.equals("checkCardId.action")) {
+            checkCardId(req, resp);
+        }
+    }
+
+    private void addEmployee(HttpServletRequest request, HttpServletResponse resp) throws IOException {
+        String name = request.getParameter("name");
+        String cardId = request.getParameter("cardId");
+        String sex = request.getParameter("sex");
+        String jobId = request.getParameter("jobId");
+        String education = request.getParameter("education");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String tel = request.getParameter("tel");
+        String party = request.getParameter("party");
+        String qqNum = request.getParameter("gqNum");
+        String address = request.getParameter("address");
+        String postCode = request.getParameter("postCode");
+        String birthday = request.getParameter("birthday");
+        String race = request.getParameter("pace");
+        String speciality = request.getParameter("speciality");
+        String hobby = request.getParameter("hobby");
+        String remark = request.getParameter("remark");
+        String deptId = request.getParameter("deptId");
+        Employee employee = new Employee(name, cardId, address, phone, email, Integer.parseInt(sex), education, new Date(), Integer.parseInt(deptId), Integer.parseInt(jobId), postCode, qqNum, party, FormatStringAsDate.formart(birthday), race, 0, speciality, hobby, remark, tel);
+
+        var out = resp.getWriter();
+        int i = employeeDao.addEmployee(employee);
+        if (1 > 0) {//添加成功返回1
+            System.out.println(i);
+//        print, write：当返回的值是页面标签的时候伂用
+            out.print(1);
+        } else {//添加失敗返回0
+            out.print(0);
+        }
+    }
+
+    private void checkCardId(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var id = req.getParameter("cardId");
+        var res = employeeDao.selectCardId(id);
+        var out = resp.getWriter();
+        if (res) {
+            out.print(0);
+        } else {
+            out.print(1);
         }
     }
 
@@ -65,6 +112,9 @@ public class EmployeeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        var action = initAndGetAction(req, resp);
+        if (action.equals("addEmployee.action")) {
+            addEmployee(req, resp);
+        }
     }
 }

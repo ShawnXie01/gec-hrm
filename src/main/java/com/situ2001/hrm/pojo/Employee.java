@@ -3,6 +3,16 @@ package com.situ2001.hrm.pojo;
 import java.util.Date;
 
 public class Employee {
+    private String qqNum;
+    private String party;
+    private Date birthday;
+    private String race;
+    private int state;
+    private String speciality;
+    private String hobby;
+    private String tel;
+    private String remark;
+    private String postCode;
     private int id;
     private String name;
     private String cardId;
@@ -15,6 +25,101 @@ public class Employee {
     private int job_id;
     private int dept_id;
     private String jobName;
+    private String deptName;
+
+    public Employee() {
+    }
+
+    public Employee(String name, String cardId, String address, String phone, String email, int sex, String education, Date createDate, int deptId, int job_id, String postCode, String qqNum, String party, Date birthday, String race, int state, String speciality, String hobby, String remark, String tel) {
+        this.name = name;
+        this.cardId = cardId;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.sex = sex;
+        this.education = education;
+        this.createDate = createDate;
+        this.dept_id = deptId;
+        this.job_id = job_id;
+        this.postCode = postCode;
+        this.qqNum = qqNum;
+        this.party = party;
+        this.birthday = birthday;
+        this.race = race;
+        this.state = state;
+        this.speciality = speciality;
+        this.hobby = hobby;
+        this.remark = remark;
+        this.tel = tel;
+    }
+
+    public String getQqNum() {
+        return qqNum;
+    }
+
+    public String getParty() {
+        return party;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
 
     public String getDeptName() {
         return deptName;
@@ -31,8 +136,6 @@ public class Employee {
     public void setJobName(String jobName) {
         this.jobName = jobName;
     }
-
-    private String deptName;
 
     public int getDept_id() {
         return dept_id;
