@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
-@WebServlet(urlPatterns = {"/employeeList.action", "/checkCardId.action", "/addEmployee.action"})
+@WebServlet(urlPatterns = {"/employeeList.action", "/checkCardId.action", "/addEmployee.action", "/delEmployee.action", "/delEmployees.action"})
 public class EmployeeServlet extends HttpServlet {
     private EmployeeDao employeeDao = new EmployeeDaoImpl();
 
@@ -115,6 +115,28 @@ public class EmployeeServlet extends HttpServlet {
         var action = initAndGetAction(req, resp);
         if (action.equals("addEmployee.action")) {
             addEmployee(req, resp);
+        } else if (action.equals("delEmployee.action")) {
+            delEmployee(req, resp);
+        } else if (action.equals("delEmployees.action")) {
+            delEmployees(req, resp);
+        }
+    }
+
+    private void delEmployee(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var id = Integer.parseInt(req.getParameter("id"));
+        if (employeeDao.delete(id) > 0) {
+            resp.getWriter().print(1);
+        } else {
+            resp.getWriter().print(0);
+        }
+    }
+
+    private void delEmployees(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var idsString = req.getParameter("ids");
+        if (employeeDao.deleteMany(idsString) > 0) {
+            resp.getWriter().print(1);
+        } else {
+            resp.getWriter().print(0);
         }
     }
 }

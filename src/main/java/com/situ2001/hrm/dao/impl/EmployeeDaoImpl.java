@@ -47,6 +47,16 @@ public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao 
     }
 
     @Override
+    public int delete(int id) {
+        return update("delete from employee_inf where id = ?", id);
+    }
+
+    @Override
+    public int deleteMany(String idSetString) {
+        return update("delete from employee_inf where id in" + idSetString);
+    }
+
+    @Override
     public Employee getBean(ResultSet rs) {
         Employee employee = new Employee();
         try {
