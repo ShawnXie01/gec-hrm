@@ -58,7 +58,7 @@ public class EmployeeServlet extends HttpServlet {
 
         var out = resp.getWriter();
         int i = employeeDao.addEmployee(employee);
-        if (1 > 0) {//添加成功返回1
+        if (i > 0) {//添加成功返回1
             System.out.println(i);
 //        print, write：当返回的值是页面标签的时候伂用
             out.print(1);
