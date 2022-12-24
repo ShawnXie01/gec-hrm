@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/jobList.action", "/delJob.action", "/delJobs.action", "/checkJobName.action", "/updJob.action", "/addJob.action"})
+@WebServlet(urlPatterns = {"/jobList.action", "/delJob.action", "/delJobs.action", "/checkJobName.action", "/updJob.action", "/addJob.action", "/getAllJob.action"})
 public class JobServlet extends HttpServlet {
     private final JobDaoImpl jobDao = new JobDaoImpl();
 
@@ -34,7 +34,15 @@ public class JobServlet extends HttpServlet {
             case "checkJobName.action":
                 checkJobName(req, resp);
                 break;
+            case "getAllJob.action":
+                getAllJob(req, resp);
+                break;
         }
+    }
+
+    private void getAllJob(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var list =jobDao.listJob();
+        resp.getWriter().print(new Gson().toJson(list));
     }
 
 

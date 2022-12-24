@@ -11,6 +11,7 @@ public interface JobDao {
     int deleteMany(String idSetString);
     int count();
     int countByJobName(String jobName);
+    List<Job> listJob();
     List<Job> listJob(int page, int limit);
     List<Job> findJobByName(String jobName, int page, int limit);
     int update(Job job);

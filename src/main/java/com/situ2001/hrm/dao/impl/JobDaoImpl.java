@@ -35,6 +35,11 @@ public class JobDaoImpl extends JDBCUtils<Job> implements JobDao {
     }
 
     @Override
+    public List<Job> listJob() {
+        return query("select * from job_inf");
+    }
+
+    @Override
     public List<Job> listJob(int page, int limit) {
         return query("select * from job_inf " + "limit " + (page - 1) * limit + "," + limit);
     }

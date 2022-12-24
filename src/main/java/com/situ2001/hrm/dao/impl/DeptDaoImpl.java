@@ -45,6 +45,11 @@ public class DeptDaoImpl extends JDBCUtils<Dept> implements DeptDao {
 
 
     @Override
+    public List<Dept> deptList() {
+        return query("select * from dept_inf");
+    }
+
+    @Override
     public List<Dept> deptList(String name, String status, int page, int limit) {
         String sql = "select * from dept_inf where 1=1";
         if(name != null && !"".equals(status)) {

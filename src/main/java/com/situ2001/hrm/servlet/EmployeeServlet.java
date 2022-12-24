@@ -41,7 +41,7 @@ public class EmployeeServlet extends HttpServlet {
         var name = req.getParameter("name");
         var sex = Integer.parseInt(req.getParameter("sex") == null || req.getParameter("sex").isEmpty() ? "-1" : req.getParameter("sex"));
         var jobId = Integer.parseInt(req.getParameter("jobId") == null || req.getParameter("jobId").isEmpty() ? "-1" : req.getParameter("jobId"));
-        var deptId = Integer.parseInt(req.getParameter("deptID") == null || req.getParameter("deptId").isEmpty() ? "-1" : req.getParameter("deptId"));
+        var deptId = Integer.parseInt(req.getParameter("deptId") == null || req.getParameter("deptId").isEmpty() ? "-1" : req.getParameter("deptId"));
         var cardId = req.getParameter("cardId");
         var phone = req.getParameter("phone");
         // save to a Employee object

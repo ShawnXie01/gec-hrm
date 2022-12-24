@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/deptList.action", "/checkDeptName.action", "/addDept.action", "/updDept.action", "/delDept.action", "/delDepts.action"})
+@WebServlet(urlPatterns = {"/deptList.action", "/checkDeptName.action", "/addDept.action", "/updDept.action", "/delDept.action", "/delDepts.action", "/getAllDept.action"})
 public class DeptServlet extends HttpServlet {
     private DeptDao deptDao = new DeptDaoImpl();
 
@@ -39,8 +39,15 @@ public class DeptServlet extends HttpServlet {
             delDept(request, response);
         } else if (action.equals("delDepts.action")) {
             delDepts(request, response);
+        } else if (action.equals("getAllDept.action")) {
+            getAllDepts(request, response);
         }
+    }
 
+    private void getAllDepts(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        var out = response.getWriter();
+        var list = deptDao.deptList();
+        out.print(new Gson().toJson(list));
     }
 
     private void delDepts(HttpServletRequest request, HttpServletResponse response) throws IOException {
