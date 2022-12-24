@@ -45,11 +45,11 @@ public class EmployeeServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String tel = request.getParameter("tel");
         String party = request.getParameter("party");
-        String qqNum = request.getParameter("gqNum");
+        String qqNum = request.getParameter("qqNum");
         String address = request.getParameter("address");
         String postCode = request.getParameter("postCode");
         String birthday = request.getParameter("birthday");
-        String race = request.getParameter("pace");
+        String race = request.getParameter("race");
         String speciality = request.getParameter("speciality");
         String hobby = request.getParameter("hobby");
         String remark = request.getParameter("remark");
