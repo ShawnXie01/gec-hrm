@@ -8,4 +8,5 @@ public interface EmployeeDao {
     List<Employee> getEmployeeList(Employee employee);
     boolean selectCardId(String id);
     int addEmployee(Employee employee);
+    int updEmployee(Employee employee);
 }

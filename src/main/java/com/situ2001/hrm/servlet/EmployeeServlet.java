@@ -142,7 +142,12 @@ public class EmployeeServlet extends HttpServlet {
         String hobby = request.getParameter("hobby");
         String remark = request.getParameter("remark");
         String deptId = request.getParameter("deptId");
-        Employee  employee = new Employee
-
+        Employee  employee = new Employee(qqNum,party,FormatStringAsDate.formart(birthday),race,speciality,hobby,tel,remark,postCode,Integer.parseInt(id),name,cardId,address,phone,email,Integer.parseInt(sex),education,Integer.parseInt(jobId),Integer.parseInt(deptId));
+        var ret = employeeDao.updEmployee(employee);
+        if (ret > 0) {
+            out.print(1);
+        } else {
+            out.print(0);
+        }
     }
 }
