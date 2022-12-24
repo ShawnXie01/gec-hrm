@@ -95,8 +95,6 @@ public class EmployeeDaoImpl extends JDBCUtils<Employee> implements EmployeeDao 
             employee.setDeptId(rs.getInt("dept_id"));
             employee.setJobId(rs.getInt("job_id"));
             employee.setDeptId(rs.getInt("dept_id"));
-            employee.setDeptName(rs.getString("deptName"));
-            employee.setJobName(rs.getString("jobName"));
             return employee;
         } catch (SQLException e) {
             e.printStackTrace();
