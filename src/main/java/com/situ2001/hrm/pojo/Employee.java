@@ -30,6 +30,28 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(String qqNum, String party, Date birthday, String race, String speciality, String hobby, String tel, String remark, String postCode, int id, String name, String cardId, String address, String phone, String email, int sex, String education, int job_id, int dept_id) {
+        this.qqNum = qqNum;
+        this.party = party;
+        this.birthday = birthday;
+        this.race = race;
+        this.speciality = speciality;
+        this.hobby = hobby;
+        this.tel = tel;
+        this.remark = remark;
+        this.postCode = postCode;
+        this.id = id;
+        this.name = name;
+        this.cardId = cardId;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.sex = sex;
+        this.education = education;
+        this.job_id = job_id;
+        this.dept_id = dept_id;
+    }
+
     public Employee(String name, String cardId, String address, String phone, String email, int sex, String education, Date createDate, int deptId, int job_id, String postCode, String qqNum, String party, Date birthday, String race, int state, String speciality, String hobby, String remark, String tel) {
         this.name = name;
         this.cardId = cardId;
