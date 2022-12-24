@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea9d649f-54c5-4a18-b1a5-28ee26519087" name="Changes" comment="CRUD for jobs sheet">
+    <list default="true" id="ea9d649f-54c5-4a18-b1a5-28ee26519087" name="Changes" comment="CRUD for dept sheet">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/EmployeeDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/dao/impl/EmployeeDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/pojo/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/situ2001/hrm/servlet/EmployeeServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/dept/dept-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/dept/dept-list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671358158931</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="CRUD for dept sheet">
+      <created>1671368040694</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1671368040694</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -226,17 +236,7 @@
     <MESSAGE value="mark before 分页" />
     <MESSAGE value="delete users" />
     <MESSAGE value="CRUD for jobs sheet" />
-    <option name="LAST_COMMIT_MESSAGE" value="CRUD for jobs sheet" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/situ2001/hrm/servlet/DeptServlet.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="CRUD for dept sheet" />
+    <option name="LAST_COMMIT_MESSAGE" value="CRUD for dept sheet" />
   </component>
 </project>
