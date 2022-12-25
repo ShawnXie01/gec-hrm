@@ -39,3 +39,6 @@ build/
 
 ### tomcat ###
 /apache-tomcat-9.0.70
+
+### file upload ###
+/src/main/webapp/files/
