@@ -3,6 +3,7 @@ package com.situ2001.hrm.dao.impl;
 import com.situ2001.hrm.dao.DocumentDao;
 import com.situ2001.hrm.dao.UserDao;
 import com.situ2001.hrm.pojo.Document;
+import com.situ2001.hrm.util.FormatStringAsDate;
 import com.situ2001.hrm.util.JDBCUtils;
 
 import java.sql.ResultSet;
@@ -15,7 +16,7 @@ public class DocumentDaoImpl extends JDBCUtils<Document> implements DocumentDao 
     @Override
     public List<Document> documentList(int page, int limit, Document entity) {
         String sql = "select * from document_inf where 1=1";
-        if (entity.getTitle() != null && entity.getTitle().equals("")) {
+        if (entity.getTitle() != null && !entity.getTitle().equals("")) {
             sql += " and title like '%" + entity.getTitle() + "%'";
         }
         sql += " limit " + (page - 1) * limit + "," + limit + "";
@@ -52,6 +53,7 @@ public class DocumentDaoImpl extends JDBCUtils<Document> implements DocumentDao 
             document.setFileType(rs.getString("fileType"));
             document.setUserId(rs.getInt("user_id"));
             document.setUserName(userDao.findById(rs.getInt("user_id")).getLoginname());
+            document.setCreateDate(FormatStringAsDate.formart(rs.getString("create_date")));
             return document;
         } catch (SQLException e) {
             throw new RuntimeException(e);
