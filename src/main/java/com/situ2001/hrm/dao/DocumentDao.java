@@ -7,4 +7,5 @@ public interface DocumentDao {
     List<Document> documentList(int page, int limit, Document entity);
     int count();
     int add(Document document);
+    int update(Document document);
 }

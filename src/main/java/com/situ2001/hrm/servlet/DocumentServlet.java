@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/documentList.action", "/getAllDocument.action", "/upload.action", "/addDocument.action"})
+@WebServlet(urlPatterns = {"/documentList.action", "/getAllDocument.action", "/upload.action", "/addDocument.action", "/updDocument.action"})
 public class DocumentServlet extends HttpServlet {
     public static final long serialVersionUID = 1L;
     private DocumentDao documentDao = new DocumentDaoImpl();
@@ -46,6 +46,8 @@ public class DocumentServlet extends HttpServlet {
             upload(req, resp);
         } else if (action.equals("addDocument.action")) {
             addDocument(req, resp);
+        } else if (action.equals("updDocument.action")) {
+            updDocument(req, resp);
         }
     }
 
@@ -69,6 +71,29 @@ public class DocumentServlet extends HttpServlet {
         document.setUserId(userId);
         // then invoke dao with this document object
         var result = documentDao.add(document);
+        if (result > 0) {
+            out.print(1);
+        } else {
+            out.print(0);
+        }
+    }
+
+    private void updDocument(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var out = resp.getWriter();
+        // get data from form
+        var id = Integer.parseInt(req.getParameter("id"));
+        var remark = req.getParameter("remark");
+        var title = req.getParameter("title");
+        var filename = req.getParameter("filename"); // TODO should I change the name of file if name is changed?
+        var filetype = filename.substring(filename.lastIndexOf(".") + 1);
+        // put them into an object
+        var document = new Document();
+        document.setId(id);
+        document.setTitle(title);
+        document.setRemark(remark);
+        document.setFileName(filename);
+        // then invoke dao with this document object
+        var result = documentDao.update(document);
         if (result > 0) {
             out.print(1);
         } else {

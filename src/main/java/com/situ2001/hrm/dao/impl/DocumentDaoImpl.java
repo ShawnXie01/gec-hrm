@@ -33,6 +33,15 @@ public class DocumentDaoImpl extends JDBCUtils<Document> implements DocumentDao 
     }
 
     @Override
+    public int update(Document document) {
+        var id = document.getId();
+        var title = document.getTitle();
+        var remark = document.getRemark();
+        var filename = document.getFileName();
+        return update("update document_inf set title=?,remark=?,filename=? where id=?", title, remark, filename, id);
+    }
+
+    @Override
     public Document getBean(ResultSet rs) {
         try {
             Document document = new Document();
