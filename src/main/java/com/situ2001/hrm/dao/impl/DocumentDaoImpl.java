@@ -28,6 +28,11 @@ public class DocumentDaoImpl extends JDBCUtils<Document> implements DocumentDao 
     }
 
     @Override
+    public int add(Document document) {
+        return update("insert into document_inf values(null,?,?,?,X'',?,sysdate(),?)", document.getTitle(), document.getFileName(), document.getFileType(), document.getRemark(), document.getUserId());
+    }
+
+    @Override
     public Document getBean(ResultSet rs) {
         try {
             Document document = new Document();

@@ -5,6 +5,7 @@ import com.situ2001.hrm.dao.DocumentDao;
 import com.situ2001.hrm.dao.impl.DocumentDaoImpl;
 import com.situ2001.hrm.pojo.Document;
 import com.situ2001.hrm.pojo.R;
+import com.situ2001.hrm.pojo.User;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/documentList.action", "/getAllDocument.action", "/upload.action"})
+@WebServlet(urlPatterns = {"/documentList.action", "/getAllDocument.action", "/upload.action", "/addDocument.action"})
 public class DocumentServlet extends HttpServlet {
     public static final long serialVersionUID = 1L;
     private DocumentDao documentDao = new DocumentDaoImpl();
@@ -43,6 +44,35 @@ public class DocumentServlet extends HttpServlet {
         var action = initAndGetAction(req, resp);
         if (action.equals("upload.action")) {
             upload(req, resp);
+        } else if (action.equals("addDocument.action")) {
+            addDocument(req, resp);
+        }
+    }
+
+    private void addDocument(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var out = resp.getWriter();
+        // get data from form
+        var content = req.getParameter("content");
+        var title = req.getParameter("title");
+        var filename = req.getParameter("filename");
+        var filetype = filename.substring(filename.lastIndexOf(".") + 1);
+        // get user data
+        var session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        var userId = user.getId();
+        // push them into an object
+        var document = new Document();
+        document.setTitle(title);
+        document.setRemark(content);
+        document.setFileName(filename);
+        document.setFileType(filetype);
+        document.setUserId(userId);
+        // then invoke dao with this document object
+        var result = documentDao.add(document);
+        if (result > 0) {
+            out.print(1);
+        } else {
+            out.print(0);
         }
     }
 
