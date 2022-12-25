@@ -5,23 +5,13 @@ import java.util.Date;
 public class Document {
     private int id;
     private String title;
-    private String filename;
-    private String filetype;
+    private String fileName;
+    private String fileType;
     private String fileUrl;
     private String remark;
     private Date createDate;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    private int userId; // TODO use wrapper class?
-//    private String userName;
-
+    private int userId;
+    private String userName;
 
     public int getId() {
         return id;
@@ -39,43 +29,59 @@ public class Document {
         this.title = title;
     }
 
-    public String getFilename() {
-        return filename;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public String getFiletype() {
-        return filetype;
-    }
-
-    public void setFiletype(String filetype) {
-        this.filetype = filetype;
-    }
-
-    public String getFileUrl() {
-        return fileUrl;
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 
     public void setFileUrl(String fileUrl) {
         this.fileUrl = fileUrl;
     }
 
-    public String getRemark() {
-        return remark;
-    }
-
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public String getRemark() {
+        return remark;
     }
 
     public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 }
