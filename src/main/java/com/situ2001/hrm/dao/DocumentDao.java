@@ -8,4 +8,7 @@ public interface DocumentDao {
     int count();
     int add(Document document);
     int update(Document document);
+    int delete(int id);
+    int deleteMany(String idSetString);
+    List<Document> findById(String id);
 }

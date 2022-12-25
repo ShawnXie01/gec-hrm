@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/documentList.action", "/getAllDocument.action", "/upload.action", "/addDocument.action", "/updDocument.action"})
+@WebServlet(urlPatterns = {"/documentList.action", "/getAllDocument.action", "/upload.action", "/addDocument.action", "/updDocument.action", "/delDocument.action", "/delDocuments.action"})
 public class DocumentServlet extends HttpServlet {
     public static final long serialVersionUID = 1L;
     private DocumentDao documentDao = new DocumentDaoImpl();
@@ -48,6 +48,45 @@ public class DocumentServlet extends HttpServlet {
             addDocument(req, resp);
         } else if (action.equals("updDocument.action")) {
             updDocument(req, resp);
+        } else if (action.equals("delDocument.action")) {
+            delDocument(req, resp);
+        } else if (action.equals("delDocuments.action")) {
+            delDocuments(req, resp);
+        }
+    }
+
+    private void deleteFileIfExist(String filepath) {
+        var file = new File(filepath);
+        if (file.exists()) {
+            file.delete();
+        }
+    }
+
+    private void delDocument(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var id = Integer.parseInt(req.getParameter("id"));
+        var documents = documentDao.findById(req.getParameter("id"));
+        if (documentDao.delete(id) > 0) {
+            var baseDirPath = req.getSession().getServletContext().getRealPath("/files");
+            for (var document : documents) {
+                deleteFileIfExist(baseDirPath + "/" + document.getFileName());
+            }
+            resp.getWriter().print(1);
+        } else {
+            resp.getWriter().print(0);
+        }
+    }
+
+    private void delDocuments(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        var idsString = req.getParameter("ids");
+        var documents = documentDao.findById(idsString);
+        if (documentDao.deleteMany(idsString) > 0) {
+            var baseDirPath = req.getSession().getServletContext().getRealPath("/files");
+            for (var document : documents) {
+                deleteFileIfExist(baseDirPath + "/" + document.getFileName());
+            }
+            resp.getWriter().print(1);
+        } else {
+            resp.getWriter().print(0);
         }
     }
 

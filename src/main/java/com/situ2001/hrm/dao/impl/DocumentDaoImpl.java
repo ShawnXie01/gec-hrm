@@ -43,6 +43,21 @@ public class DocumentDaoImpl extends JDBCUtils<Document> implements DocumentDao 
     }
 
     @Override
+    public int delete(int id) {
+        return update("delete from document_inf where id = ?", id);
+    }
+
+    @Override
+    public int deleteMany(String idSetString) {
+        return update("delete from document_inf where id in(" + idSetString + ")");
+    }
+
+    @Override
+    public List<Document> findById(String id) {
+        return query("select * from document_inf where id in(" + id + ")");
+    }
+
+    @Override
     public Document getBean(ResultSet rs) {
         try {
             Document document = new Document();
