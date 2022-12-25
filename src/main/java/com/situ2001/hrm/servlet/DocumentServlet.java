@@ -2,7 +2,7 @@ package com.situ2001.hrm.servlet;
 
 import com.google.gson.Gson;
 import com.situ2001.hrm.dao.DocumentDao;
-import com.situ2001.hrm.dao.impl.DocumentDaoImp;
+import com.situ2001.hrm.dao.impl.DocumentDaoImpl;
 import com.situ2001.hrm.pojo.Document;
 import com.situ2001.hrm.pojo.R;
 import org.apache.commons.fileupload.FileItemFactory;
@@ -22,7 +22,7 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/documentList.action", "/getAllDocument.action", "/upload.action"})
 public class DocumentServlet extends HttpServlet {
     public static final long serialVersionUID = 1L;
-    private DocumentDao documentDao = new DocumentDaoImp();
+    private DocumentDao documentDao = new DocumentDaoImpl();
 
     private String initAndGetAction(HttpServletRequest req, HttpServletResponse resp) {
         resp.setCharacterEncoding("UTF-8");
