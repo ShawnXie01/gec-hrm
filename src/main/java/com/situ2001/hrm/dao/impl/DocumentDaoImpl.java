@@ -15,7 +15,7 @@ public class DocumentDaoImpl extends JDBCUtils<Document> implements DocumentDao 
     @Override
     public List<Document> documentList(int page, int limit, Document entity) {
         String sql = "select * from document_inf where 1=1";
-        if (entity.getTitle() != null && entity.getTitle().equals("")) {
+        if (entity.getTitle() != null && !entity.getTitle().equals("")) {
             sql += " and title like '%" + entity.getTitle() + "%'";
         }
         sql += " limit " + (page - 1) * limit + "," + limit + "";
