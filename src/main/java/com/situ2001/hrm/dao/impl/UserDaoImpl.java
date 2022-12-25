@@ -18,6 +18,11 @@ public class UserDaoImpl extends JDBCUtils<User> implements UserDao {
         return null;
     }
 
+    @Override
+    public User findById(int id) {
+        return query("select * from user_inf where id = "+id).get(0);
+    }
+
     /**
      * get list of all users
      *
