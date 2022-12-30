@@ -10,7 +10,7 @@ Just for collaborating with my teammates.
 
 ## Tech Stack
 
-TODO
+Servlet + Tomcat + MySQL + JQuery + layui
 
 ## 运行环境
 
